@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4CC9A551-3337-49A9-A755-3B1A51558A5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Runtime</RootNamespace>
+    <AssemblyName>BlurryRoots.Runtime</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEditor">
+      <HintPath>..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlurryRoots\Cameras\CameraController.cs" />
+    <Compile Include="BlurryRoots\Cameras\TopDownCameraController.cs" />
+    <Compile Include="BlurryRoots\Commands\CommandQueue.cs" />
+    <Compile Include="BlurryRoots\Commands\ICommand.cs" />
+    <Compile Include="BlurryRoots\Commands\InvokeDelegateCommand.cs" />
+    <Compile Include="BlurryRoots\Common\ComponentLocator.cs" />
+    <Compile Include="BlurryRoots\Common\EnumTypeEnumerator.cs" />
+    <Compile Include="BlurryRoots\Common\TimedTrigger.cs" />
+    <Compile Include="BlurryRoots\Events\EventManager.cs" />
+    <Compile Include="BlurryRoots\Events\EventSystem.cs" />
+    <Compile Include="BlurryRoots\Inputs\InputEvents.cs" />
+    <Compile Include="BlurryRoots\Inputs\InputManager.cs" />
+    <Compile Include="BlurryRoots\Inputs\InputSystem.cs" />
+    <Compile Include="BlurryRoots\Procedural\Chain.cs" />
+    <Compile Include="BlurryRoots\Procedural\Generators.cs" />
+    <Compile Include="BlurryRoots\Procedural\IChainLink.cs" />
+    <Compile Include="BlurryRoots\Procedural\Mutators.cs" />
+    <Compile Include="BlurryRoots\Procedural\Noise.cs" />
+    <Compile Include="BlurryRoots\Procedural\NoiseGenerators.cs" />
+    <Compile Include="BlurryRoots\Procedural\RoomPosition.cs" />
+    <Compile Include="BlurryRoots\Procedural\Selectors.cs" />
+    <Compile Include="BlurryRoots\Randomizer\IRandomNumberGenerator.cs" />
+    <Compile Include="BlurryRoots\Randomizer\Randomizer.cs" />
+    <Compile Include="BlurryRoots\Randomizer\UniformRandomNumberGenerator.cs" />
+    <Compile Include="BlurryRoots\Sprites\MultiTextureSprite.cs" />
+    <Compile Include="BlurryRoots\Sprites\TextureSprite.cs" />
+    <Compile Include="BlurryRoots\States\IState.cs" />
+    <Compile Include="BlurryRoots\States\StateManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BlurryRoots\AI\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
