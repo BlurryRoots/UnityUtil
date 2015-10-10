@@ -169,97 +169,45 @@ namespace BlurryRoots {
 		public static class RoomBuilder {
 
 			public static List<RoomPosition> TryFindPath (IRandomNumberGenerator rng, RoomPosition current, int minDist, RoomPosition target) {
-				var horizontalTarget = new RoomPosition (target.X, 0, target.Z);
-				List<RoomPosition> horizontalMap = null;
-				while (null == horizontalMap) {
-					horizontalMap = TryFindPathHorizontal (rng, current, minDist, horizontalTarget, new List<RoomPosition> ());
-				}
-								
-				var last = horizontalMap[horizontalMap.Count - 1];
-				if (last == target) {
-					return horizontalMap;
-				}
+				var targetDistance = target - current;
 
-				var nextVertical = (last.Y < target.Y)
-					? RoomPosition.Neighbour (last, RoomPosition.Directions.Up)
-					: RoomPosition.Neighbour (last, RoomPosition.Directions.Down)
-					;
-				var distLeft = minDist - horizontalMap.Count;
-				List<RoomPosition> verticalMap = null;
-				while (null == verticalMap) {
-					verticalMap = TryFindPathVertical (rng, nextVertical, distLeft, target, new List<RoomPosition> (horizontalMap));
-				}
+				var revMap = new List<RoomPosition> ();
+				revMap.Add (targetDistance);
 
-				return verticalMap;
-			}
+				while (RoomPosition.Zero != targetDistance) {
+					var hasNext = false;
+					var considerX = 0 != targetDistance.X;
+					var considerY = 0 != targetDistance.Y;
+					var considerZ = 0 != targetDistance.Z;
+					var min = 1;
 
-			public static List<RoomPosition> TryFindPathVertical (IRandomNumberGenerator rng, RoomPosition current, int minDist, RoomPosition target, List<RoomPosition> map) {
-				if (map.Contains (current)) {
-					return null;
-				}
+					min += considerX ? 0 : 33;
+					min += considerY ? 0 : 33;
+					min += considerZ ? 0 : 33;
 
-				map.Add (current);
+					var diceRoll = rng.Range (min, 100);
 
-				if (0 >= minDist && (current == target)) {
-					return map;
-				}
+					if (considerX && 77 < diceRoll) {
+						targetDistance.X += (int)Mathf.Sign (-targetDistance.X);
+						hasNext = true;
+					}
+					else if (considerY && 33 < diceRoll) {
+						targetDistance.Y += (int)Mathf.Sign (-targetDistance.Y);
+						hasNext = true;
+					}
+					else if (considerZ && 0 < diceRoll) {
+						targetDistance.Z += (int)Mathf.Sign (-targetDistance.Z);
+						hasNext = true;
+					}
 
-				RoomPosition next;
-
-				// do this on a flat plane
-				var dir = rng.Range (1, 4);
-				switch (dir) {
-					case 1:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.Up);
-						break;
-					case 2:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.East);
-						break;
-					case 3:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.Down);
-						break;
-					case 4:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.West);
-						break;
-					default:
-						throw new System.Exception ("This is spartaaaaa!");
+					if (hasNext) {
+						revMap.Add (targetDistance);
+					}
 				}
 
-				return TryFindPathVertical (rng, next, minDist - 1, target, map);
-			}
+				revMap.Reverse ();
 
-			public static List<RoomPosition> TryFindPathHorizontal (IRandomNumberGenerator rng, RoomPosition current, int minDist, RoomPosition target, List<RoomPosition> map) {
-				if (map.Contains (current)) {
-					return null;
-				}
-
-				map.Add (current);
-				
-				if (0 >= minDist && (current == target)) {
-					return map;
-				}
-
-				// do this on a flat plane
-				RoomPosition next;
-				var dir = rng.Range (1, 4);
-				switch (dir) {
-					case 1:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.North);
-						break;
-					case 2:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.East);
-						break;
-					case 3:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.South);
-						break;
-					case 4:
-						next = RoomPosition.Neighbour (current, RoomPosition.Directions.West);
-						break;
-					default:
-						throw new System.Exception ("This is spartaaaaa!");
-				}
-
-				return TryFindPathHorizontal (rng, next, minDist - 1, target, map);
+				return revMap;
 			}
 
 		}
