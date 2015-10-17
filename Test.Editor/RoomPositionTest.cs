@@ -30,8 +30,10 @@ namespace Test.Editor {
 			var rng = new UniformRandomNumberGenerator (Seed);
 			// node adjecent to tarteg is already 
 
-			List<RoomPosition> path = RoomBuilder.TryFindPath (rng, Start, 1, Target);
+			List<RoomPosition> path = RoomBuilder.TryFindPath (rng, Start, Target);
 			Assert.AreEqual (ExpectedDistance, path.Count);
+			Assert.AreEqual (Start, path[0]);
+			Assert.AreEqual (Target, path[path.Count - 1]);
 		}
 
 		[Test]
@@ -39,11 +41,11 @@ namespace Test.Editor {
 			List<RoomPosition> path1, path2;
 			{
 				var rng = new UniformRandomNumberGenerator (Seed);
-				path1 = RoomBuilder.TryFindPath (rng, Start, 1, Target);
+				path1 = RoomBuilder.TryFindPath (rng, Start, Target);
 			}
 			{
 				var rng = new UniformRandomNumberGenerator (Seed2);
-				path2 = RoomBuilder.TryFindPath (rng, Start, 1, Target);
+				path2 = RoomBuilder.TryFindPath (rng, Start, Target);
 			}
 
 			// two different seeds, should yield two different paths

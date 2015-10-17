@@ -25,7 +25,7 @@ namespace BlurryRoots {
 			}
 
 			public override bool Equals (object obj) {
-				if (this.GetType () != obj.GetType ()) {
+				if (null == obj || this.GetType () != obj.GetType ()) {
 					return false;
 				}
 
@@ -168,12 +168,23 @@ namespace BlurryRoots {
 
 		public static class RoomBuilder {
 
-			public static List<RoomPosition> TryFindPath (IRandomNumberGenerator rng, RoomPosition current, int minDist, RoomPosition target) {
+			/// <summary>
+			/// Finds randomized though direct path between two room positions.
+			/// </summary>
+			/// <param name="rng">Rng used for path building.</param>
+			/// <param name="current">Start position.</param>
+			/// <param name="target">Target position.</param>
+			/// <returns></returns>
+			public static List<RoomPosition> TryFindPath (IRandomNumberGenerator rng, RoomPosition current, RoomPosition target) {
+				// calculate the distance vector for this path
 				var targetDistance = target - current;
 
-				var revMap = new List<RoomPosition> ();
-				revMap.Add (targetDistance);
+				// create a list containing the path
+				var reversedRoute = new List<RoomPosition> ();
+				// and add the target as first waypoint
+				reversedRoute.Add (targetDistance);
 
+				// Decrease targetDistance until we reach target
 				while (RoomPosition.Zero != targetDistance) {
 					var hasNext = false;
 					var considerX = 0 != targetDistance.X;
@@ -181,33 +192,38 @@ namespace BlurryRoots {
 					var considerZ = 0 != targetDistance.Z;
 					var min = 1;
 
+					// checks weather all axes should be considered
 					min += considerX ? 0 : 33;
 					min += considerY ? 0 : 33;
 					min += considerZ ? 0 : 33;
 
+					// make a dice roll and figure out which axis gets decreased
 					var diceRoll = rng.Range (min, 100);
-
 					if (considerX && 77 < diceRoll) {
-						targetDistance.X += (int)Mathf.Sign (-targetDistance.X);
+						targetDistance.X -= (int)Mathf.Sign (targetDistance.X);
 						hasNext = true;
 					}
 					else if (considerY && 33 < diceRoll) {
-						targetDistance.Y += (int)Mathf.Sign (-targetDistance.Y);
+						targetDistance.Y -= (int)Mathf.Sign (targetDistance.Y);
 						hasNext = true;
 					}
 					else if (considerZ && 0 < diceRoll) {
-						targetDistance.Z += (int)Mathf.Sign (-targetDistance.Z);
+						targetDistance.Z -= (int)Mathf.Sign (targetDistance.Z);
 						hasNext = true;
 					}
 
+					// if there has been a successful dice roll
 					if (hasNext) {
-						revMap.Add (targetDistance);
+						// add the current target distance as room position in the path
+						reversedRoute.Add (targetDistance);
 					}
 				}
 
-				revMap.Reverse ();
+				// because we are building the map from target to start
+				// reverse the list
+				reversedRoute.Reverse ();
 
-				return revMap;
+				return reversedRoute;
 			}
 
 		}
