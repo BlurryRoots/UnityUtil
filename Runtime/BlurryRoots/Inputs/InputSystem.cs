@@ -8,26 +8,22 @@ namespace BlurryRoots {
 
 		public class InputSystem : MonoBehaviour {
 
-			public EventSystem EventSystem;
+			public EventBusSystem EventBusSystem;
 
 			public InputManager InputManager {
 				get;
 				private set;
 			}
 
-			// Use this for initialization
 			void Awake () {
-				this.InputManager.RegisterAxis ("Horizontal");
-				this.InputManager.AxisPressed += InputManager_AxisPressed;
-				this.EventSystem.EventManager.Subscribe<InputAxisPressedEvent> (this.OnAxisPressed);
+				this.InputManager.AxisChanged += this.OnAxisEvent<InputAxisChangedEvent>;
+				this.InputManager.AxisDown += this.OnAxisEvent<InputAxisDownEvent>;
+				this.InputManager.AxisUp += this.OnAxisEvent<InputAxisUpEvent>;
+				this.InputManager.AxisPressed += this.OnAxisEvent<InputAxisPressedEvent>;
 			}
 
-			void InputManager_AxisPressed (InputAxisPressedEvent e) {
-				this.EventSystem.EventManager.Raise (e);
-			}
-
-			void OnAxisPressed (InputAxisPressedEvent e) {
-				Debug.Log (e);
+			void OnAxisEvent<TAxisEvent> (TAxisEvent e) {
+				this.EventBusSystem.EventBus.Raise (e);
 			}
 
 			void Update () {

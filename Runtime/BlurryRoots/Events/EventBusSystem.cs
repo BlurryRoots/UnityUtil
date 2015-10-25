@@ -8,27 +8,21 @@ namespace BlurryRoots {
 		/// <summary>
 		/// System handling the processing and distribution of raised events.
 		/// </summary>
-		public class EventSystem : MonoBehaviour {
+		public class EventBusSystem : MonoBehaviour {
 
-			public EventManager EventManager {
-				get {
-					return this.eventManager;
-				}
-			}
-
-			void Awake () {
+			public EventBus EventBus {
+				get;
+				private set;
 			}
 
 			// Handle events in late update, so every change has already been made.
 			void LateUpdate () {
-				eventManager.DispatchRaisedEvents ();
+				this.EventBus.DispatchRaisedEvents ();
 			}
 
-			public EventSystem () {
-				this.eventManager = new EventManager ();
+			public EventBusSystem () {
+				this.EventBus = new EventBus ();
 			}
-
-			private EventManager eventManager;
 
 		}
 

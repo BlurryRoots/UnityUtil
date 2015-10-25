@@ -65,6 +65,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ProjectPrefsStorageTest.cs" />
     <Compile Include="RoomPositionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +73,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Editor\Editor.csproj">
+      <Project>{6db5a869-d8f4-4794-81b4-1d702c76192e}</Project>
+      <Name>Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Runtime\Runtime.csproj">
       <Project>{4cc9a551-3337-49a9-a755-3b1a51558a5b}</Project>
       <Name>Runtime</Name>

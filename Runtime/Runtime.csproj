@@ -54,8 +54,8 @@
     <Compile Include="BlurryRoots\Common\ComponentLocator.cs" />
     <Compile Include="BlurryRoots\Common\EnumTypeEnumerator.cs" />
     <Compile Include="BlurryRoots\Common\TimedTrigger.cs" />
-    <Compile Include="BlurryRoots\Events\EventManager.cs" />
-    <Compile Include="BlurryRoots\Events\EventSystem.cs" />
+    <Compile Include="BlurryRoots\Events\EventBus.cs" />
+    <Compile Include="BlurryRoots\Events\EventBusSystem.cs" />
     <Compile Include="BlurryRoots\Inputs\InputEvents.cs" />
     <Compile Include="BlurryRoots\Inputs\InputManager.cs" />
     <Compile Include="BlurryRoots\Inputs\InputSystem.cs" />

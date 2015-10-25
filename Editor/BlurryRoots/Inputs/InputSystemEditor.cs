@@ -1,67 +1,81 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using System.Collections.Generic;
 using BlurryRoots.Inputs;
 
 [CustomEditor (typeof (InputSystem))]
 [CanEditMultipleObjects]
 public class InputSystemEditor : Editor {
 
-    public void UpdateAxes () {
-        var inputSystem = (InputSystem)this.target;
+	private static readonly string REGISTERED_AXIS_KEY = "REGISTERED_AXIS_KEY";
 
-        this.ReadAxes (inputSystem);
-    }
+	public void UpdateAxes () {
+		var inputSystem = (InputSystem)this.target;
 
-    public override void OnInspectorGUI () {
-        base.OnInspectorGUI ();
-                
-        if (GUILayout.Button ("Update Axes")) {
-            this.UpdateAxes ();
-        }
+		this.ReadAxes (inputSystem);
+	}
 
-				var inputSystem = (InputSystem)this.target;
-				var sb = new System.Text.StringBuilder ();
-				foreach (var axis in inputSystem.InputManager.RegisteredAxes) {
-					sb.Append (axis).Append ("\n");
-				}
-				GUILayout.TextField (sb.ToString ());
-    }
+	public override void OnInspectorGUI () {
+		base.OnInspectorGUI ();
 
-    public void ReadAxes (InputSystem inputSystem) {
-        var inputManager = AssetDatabase.LoadAllAssetsAtPath ("ProjectSettings/InputManager.asset")[0];
-        var obj = new SerializedObject (inputManager);
-        var axisArray = obj.FindProperty ("m_Axes");
+		if (GUILayout.Button ("Update Axes")) {
+			this.UpdateAxes ();
+		}
 
-        if (axisArray.arraySize == 0) {
-            Debug.LogError ("No input axes defined!");
-        }
+		var inputSystem = (InputSystem)this.target;
+		var sb = new System.Text.StringBuilder ();
+		foreach (var axis in inputSystem.InputManager.RegisteredAxes) {
+			sb.Append (axis).Append ("\n");
+		}
 
-        for (int i = 0; i < axisArray.arraySize; ++i) {
-            var axis = axisArray.GetArrayElementAtIndex (i);
+		GUILayout.TextField (sb.ToString ());
+	}
 
-            var name = axis.FindPropertyRelative ("m_Name").stringValue;
-            //var axisVal = axis.FindPropertyRelative ("axis").intValue;
-            //var inputType = (InputType)axis.FindPropertyRelative ("type").intValue;
+	public void ReadAxes (InputSystem inputSystem) {
+		var inputManager = AssetDatabase.LoadAllAssetsAtPath ("ProjectSettings/InputManager.asset")[0];
+		var obj = new SerializedObject (inputManager);
+		var axisArray = obj.FindProperty ("m_Axes");
 
-            inputSystem.InputManager.RegisterAxis (name);
-        }
+		if (axisArray.arraySize == 0) {
+			Debug.LogError ("No input axes defined!");
+		}
 
-        var timestamp = System.DateTime.Now;
-        Debug.Log (timestamp + ": Updated " + axisArray.arraySize + " input axes.");
-    }
+		var axes = new List<string> ();
+		for (int i = 0; i < axisArray.arraySize; ++i) {
+			var axis = axisArray.GetArrayElementAtIndex (i);
 
-    public enum InputType {
-        KeyOrMouseButton,
-        MouseMovement,
-        JoystickAxis,
-    };
+			var name = axis.FindPropertyRelative ("m_Name").stringValue;
+			//var axisVal = axis.FindPropertyRelative ("axis").intValue;
+			//var inputType = (InputType)axis.FindPropertyRelative ("type").intValue;
 
-    [MenuItem ("Assets/ReadInputManager")]
-    public static void DoRead () {
-        //
-    }
+			axes.Add (name);
+		}
 
-    private bool atLeatOneUpdate;
+		// TODO: Find a way to store the axes
+		//PlayerPrefs.SetString (REGISTERED_AXIS_KEY, Stringify (axes));
 
+		foreach (var axis in axes) {
+			inputSystem.InputManager.RegisterAxis (axis);
+		}
+
+		var timestamp = System.DateTime.Now;
+		Debug.Log (timestamp + ": Updated " + axisArray.arraySize + " input axes.");
+	}
+
+	public enum InputType {
+		KeyOrMouseButton,
+		MouseMovement,
+		JoystickAxis,
+	};
+
+	[MenuItem ("Assets/ReadInputManager")]
+	public static void DoRead () {
+		//
+	}
+
+	private static string Stringify (IList<string> axes) {
+		return "";
+	}
+	
 }

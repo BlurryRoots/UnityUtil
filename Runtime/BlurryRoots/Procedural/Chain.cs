@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace BlurryRoots {
 	namespace Procedural {
 
+		// TODO: split data and processing ?!
 		[System.Serializable]
 		public class Chain<TValueType> : List<IChainLink<TValueType>>, IChainLink<TValueType> {
 

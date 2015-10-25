@@ -91,18 +91,27 @@ namespace BlurryRoots {
 					// Check if the value has been changed
 					var hasChanged = float.Epsilon < Mathf.Abs (prevValue - curValue);
 					// If value has been change up
-					var changedUp = float.Epsilon > Mathf.Abs (curValue)
-						&& float.Epsilon < Mathf.Abs (prevValue);
+					//var changedUp = float.Epsilon > Mathf.Abs (curValue)
+					//	&& float.Epsilon < Mathf.Abs (prevValue);
+					var changedUp = 0 < curValue
+						&& (0 == prevValue
+							|| Mathf.Sign (prevValue) != Mathf.Sign (curValue));
 					// If value has been changed down
-					var changedDown = float.Epsilon < Mathf.Abs (curValue)
-						&& float.Epsilon < Mathf.Abs (prevValue);
+					//var changedDown = float.Epsilon < Mathf.Abs (curValue)
+					//	&& float.Epsilon < Mathf.Abs (prevValue);
+					var changedDown = 0 > curValue
+						&& (0 == prevValue
+							|| Mathf.Sign (prevValue) != Mathf.Sign (curValue)); ;
 					// Check if current value has a non zero value
 					var hasValue = float.Epsilon < Mathf.Abs (curValue);
 
 					if (hasChanged) {
 						this.OnAxisChanged (axisName, prevValue, curValue);
 
-						if (hasValue) {
+						if (hasValue && Mathf.Abs (prevValue) == 0) {
+							//var c = (int)(Mathf.Ceil (Mathf.Abs (curValue)) * Mathf.Sign (curValue));
+							//var p = (int)(Mathf.Ceil (Mathf.Abs (prevValue)) * Mathf.Sign (prevValue));
+
 							this.OnAxisPressed (axisName, curValue);
 						}
 

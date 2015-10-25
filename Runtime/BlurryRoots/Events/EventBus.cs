@@ -8,7 +8,7 @@ namespace BlurryRoots {
 		/// <summary>
 		/// Manages event handler subscribtions and is responsible for raising, processing and distributing events.
 		/// </summary>
-		public class EventManager {
+		public class EventBus {
 
 			/// <summary>
 			/// Subscribes the given callback for being notifed when event is dispatched.
@@ -79,7 +79,7 @@ namespace BlurryRoots {
 			/// <summary>
 			/// Creates a new EventManager.
 			/// </summary>
-			public EventManager () {
+			public EventBus () {
 				this.dispatchers = new Dictionary<System.Type, IEventDispatcher> ();
 			}
 
