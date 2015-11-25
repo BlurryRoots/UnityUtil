@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4CC9A551-3337-49A9-A755-3B1A51558A5B}</ProjectGuid>
+    <ProjectGuid>{076F3326-DFBC-4A78-87A6-7F09B17560AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlurryRoots</RootNamespace>
-    <AssemblyName>BlurryRoots.Runtime</AssemblyName>
+    <RootNamespace>BlurryRoots.Procedural</RootNamespace>
+    <AssemblyName>BlurryRoots.Runtime.Procedural</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -42,30 +42,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlurryRoots\Cameras\CameraController.cs" />
-    <Compile Include="BlurryRoots\Cameras\TopDownCameraController.cs" />
-    <Compile Include="BlurryRoots\Commands\CommandQueue.cs" />
-    <Compile Include="BlurryRoots\Commands\ICommand.cs" />
-    <Compile Include="BlurryRoots\Commands\InvokeDelegateCommand.cs" />
-    <Compile Include="BlurryRoots\Common\ComponentLocator.cs" />
-    <Compile Include="BlurryRoots\Common\EnumTypeEnumerator.cs" />
-    <Compile Include="BlurryRoots\Common\TimedTrigger.cs" />
-    <Compile Include="BlurryRoots\Events\EventBus.cs" />
-    <Compile Include="BlurryRoots\Events\EventBusSystem.cs" />
-    <Compile Include="BlurryRoots\Inputs\InputEvents.cs" />
-    <Compile Include="BlurryRoots\Inputs\InputManager.cs" />
-    <Compile Include="BlurryRoots\Inputs\InputSystem.cs" />
-    <Compile Include="BlurryRoots\Randomizer\IRandomNumberGenerator.cs" />
-    <Compile Include="BlurryRoots\Randomizer\Randomizer.cs" />
-    <Compile Include="BlurryRoots\Randomizer\UniformRandomNumberGenerator.cs" />
-    <Compile Include="BlurryRoots\Sprites\MultiTextureSprite.cs" />
-    <Compile Include="BlurryRoots\Sprites\TextureSprite.cs" />
-    <Compile Include="BlurryRoots\States\IState.cs" />
-    <Compile Include="BlurryRoots\States\StateManager.cs" />
+    <Compile Include="BlurryRoots\Procedural\Chain.cs" />
+    <Compile Include="BlurryRoots\Procedural\Generators.cs" />
+    <Compile Include="BlurryRoots\Procedural\IChainLink.cs" />
+    <Compile Include="BlurryRoots\Procedural\Mutators.cs" />
+    <Compile Include="BlurryRoots\Procedural\Noise.cs" />
+    <Compile Include="BlurryRoots\Procedural\NoiseGenerators.cs" />
+    <Compile Include="BlurryRoots\Procedural\Selectors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BlurryRoots\AI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
