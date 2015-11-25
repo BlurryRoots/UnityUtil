@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace BlurryRoots.Procedural {
+namespace BlurryRoots.Procedural.Unity {
 
 	[System.Serializable]
 	public class OddEvenSelector : IChainLink<List<GameObject>> {

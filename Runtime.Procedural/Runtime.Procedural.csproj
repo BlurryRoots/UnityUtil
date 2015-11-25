@@ -47,7 +47,6 @@
     <Compile Include="BlurryRoots\Procedural\IChainLink.cs" />
     <Compile Include="BlurryRoots\Procedural\Mutators.cs" />
     <Compile Include="BlurryRoots\Procedural\Noise.cs" />
-    <Compile Include="BlurryRoots\Procedural\NoiseGenerators.cs" />
     <Compile Include="BlurryRoots\Procedural\Selectors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
