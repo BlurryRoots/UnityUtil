@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace BlurryRoots.Procedural.Unity {
+namespace BlurryRoots.Procedural.Implementation {
 
 	[System.Serializable]
 	public class PrimitveGenerator : IChainLink<List<GameObject>> {

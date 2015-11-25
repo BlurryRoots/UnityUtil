@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Editor", "Test.Editor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Procedural", "Runtime.Procedural\Runtime.Procedural.csproj", "{076F3326-DFBC-4A78-87A6-7F09B17560AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Procedural.Unity", "Runtime.Procedural.Unity\Runtime.Procedural.Unity.csproj", "{1D8FE2C1-DE82-4C7B-836B-CE377D5C3C52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{076F3326-DFBC-4A78-87A6-7F09B17560AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{076F3326-DFBC-4A78-87A6-7F09B17560AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{076F3326-DFBC-4A78-87A6-7F09B17560AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8FE2C1-DE82-4C7B-836B-CE377D5C3C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8FE2C1-DE82-4C7B-836B-CE377D5C3C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8FE2C1-DE82-4C7B-836B-CE377D5C3C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8FE2C1-DE82-4C7B-836B-CE377D5C3C52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
