@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using BlurryRoots.Storage;
 
 namespace BlurryRoots {
 	namespace Editor {
@@ -22,16 +23,16 @@ namespace BlurryRoots {
 					GUILayout.Label ("Key: " + entry.Key);
 					GUILayout.Label ("Type: " + entry.Type);
 					switch (entry.Type) {
-						case ProjectPrefsEntry.ValueType.Bool:
+						case PreferenceStorageEntry.ValueType.Bool:
 							GUILayout.Label ("Value: " + entry.Bool);
 							break;
-						case ProjectPrefsEntry.ValueType.Float:
+						case PreferenceStorageEntry.ValueType.Float:
 							GUILayout.Label ("Value: " + entry.Float);
 							break;
-						case ProjectPrefsEntry.ValueType.Int:
+						case PreferenceStorageEntry.ValueType.Int:
 							GUILayout.Label ("Value: " + entry.Int);
 							break;
-						case ProjectPrefsEntry.ValueType.String:
+						case PreferenceStorageEntry.ValueType.String:
 							GUILayout.Label ("Value: " + entry.String);
 							break;
 					}
@@ -44,12 +45,12 @@ namespace BlurryRoots {
 			}
 
 			public ProjectPrefs () {
-				this.storage = new ProjectPrefsStorage ();
+				this.storage = new PreferenceStorage ();
 				this.titleContent.text = "ProjectPrefs";
 				this.minSize = new Vector2 (128f, 240f);
 			}
 
-			private ProjectPrefsStorage storage;
+			private PreferenceStorage storage;
 
 			private static ProjectPrefs Instance;
 

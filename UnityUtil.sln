@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Editor", "Test.Editor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Procedural", "Runtime.Procedural\Runtime.Procedural.csproj", "{076F3326-DFBC-4A78-87A6-7F09B17560AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Procedural.Unity", "Runtime.Procedural.Unity\Runtime.Procedural.Unity.csproj", "{1D8FE2C1-DE82-4C7B-836B-CE377D5C3C52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Procedural.Implementation", "Runtime.Procedural.Implementation\Runtime.Procedural.Implementation.csproj", "{1D8FE2C1-DE82-4C7B-836B-CE377D5C3C52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

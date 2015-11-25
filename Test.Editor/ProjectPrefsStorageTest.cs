@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using BlurryRoots.Editor;
+using BlurryRoots.Storage;
 
 namespace Test.Editor {
 
@@ -13,7 +13,7 @@ namespace Test.Editor {
 
 		[Test]
 		public void SetGetBool () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 			var expected = true;
 
 			storage.SetBool (Key, expected);
@@ -31,7 +31,7 @@ namespace Test.Editor {
 
 		[Test]
 		public void SetGetInt () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 			var expected = 133742;
 
 			storage.SetInt (Key, expected);
@@ -49,7 +49,7 @@ namespace Test.Editor {
 
 		[Test]
 		public void SetGetFloat () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 			var expected = ((float)Math.Sqrt (5f) + 1f) / 2f;
 
 			storage.SetFloat (Key, expected);
@@ -67,7 +67,7 @@ namespace Test.Editor {
 
 		[Test]
 		public void SetGetString () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 			var expected = "счастли́вый";
 
 			storage.SetString (Key, expected);
@@ -85,13 +85,13 @@ namespace Test.Editor {
 
 		[Test]
 		public void OddKeyBool () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 
 			var expectedBool = true;
 			storage.SetBool (Key2, expectedBool);
 
 			var b = storage.GetBool (Key);
-			Assert.AreEqual (ProjectPrefsStorage.Defaults.Bool, b);
+			Assert.AreEqual (PreferenceStorage.Defaults.Bool, b);
 
 			var b2 = storage.GetBool (Key2);
 			Assert.AreEqual (expectedBool, b2);
@@ -99,13 +99,13 @@ namespace Test.Editor {
 
 		[Test]
 		public void OddKeyFloat () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 
 			var expectedFloat = 3.1415f;
 			storage.SetFloat (Key2, expectedFloat);
 
 			var f = storage.GetFloat (Key);
-			Assert.AreEqual (ProjectPrefsStorage.Defaults.Float, f);
+			Assert.AreEqual (PreferenceStorage.Defaults.Float, f);
 
 			var f2 = storage.GetFloat (Key2);
 			Assert.AreEqual (expectedFloat, f2);
@@ -113,13 +113,13 @@ namespace Test.Editor {
 
 		[Test]
 		public void OddKeyInt () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 
 			var expectedInt = 4096;
 			storage.SetInt (Key2, expectedInt);
 
 			var i = storage.GetInt (Key);
-			Assert.AreEqual (ProjectPrefsStorage.Defaults.Int, i);
+			Assert.AreEqual (PreferenceStorage.Defaults.Int, i);
 
 			var i2 = storage.GetInt (Key2);
 			Assert.AreEqual (expectedInt, i2);
@@ -127,13 +127,13 @@ namespace Test.Editor {
 		
 		[Test]
 		public void OddKeyString () {
-			var storage = new ProjectPrefsStorage ();
+			var storage = new PreferenceStorage ();
 
 			var expectString = "Hans im Glück!";
 			storage.SetString (Key2, expectString);
 
 			var s = storage.GetString (Key);
-			Assert.AreEqual (ProjectPrefsStorage.Defaults.String, s);
+			Assert.AreEqual (PreferenceStorage.Defaults.String, s);
 
 			var s2 = storage.GetString (Key2);
 			Assert.AreEqual (expectString, s2);

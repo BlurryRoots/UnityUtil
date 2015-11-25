@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="BlurryRoots\Inputs\InputSystemEditor.cs" />
     <Compile Include="BlurryRoots\Project\ProjectPrefs.cs" />
-    <Compile Include="BlurryRoots\Project\ProjectPrefsStorage.cs" />
     <Compile Include="BlurryRoots\Scenes\SceneManager.cs" />
     <Compile Include="BlurryRoots\Sprites\MultiTextureSpriteInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

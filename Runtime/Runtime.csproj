@@ -42,30 +42,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlurryRoots\Cameras\CameraController.cs" />
-    <Compile Include="BlurryRoots\Cameras\TopDownCameraController.cs" />
-    <Compile Include="BlurryRoots\Commands\CommandQueue.cs" />
-    <Compile Include="BlurryRoots\Commands\ICommand.cs" />
-    <Compile Include="BlurryRoots\Commands\InvokeDelegateCommand.cs" />
-    <Compile Include="BlurryRoots\Common\ComponentLocator.cs" />
-    <Compile Include="BlurryRoots\Common\EnumTypeEnumerator.cs" />
-    <Compile Include="BlurryRoots\Common\TimedTrigger.cs" />
-    <Compile Include="BlurryRoots\Events\EventBus.cs" />
-    <Compile Include="BlurryRoots\Events\EventBusSystem.cs" />
-    <Compile Include="BlurryRoots\Inputs\InputEvents.cs" />
-    <Compile Include="BlurryRoots\Inputs\InputManager.cs" />
-    <Compile Include="BlurryRoots\Inputs\InputSystem.cs" />
-    <Compile Include="BlurryRoots\Randomizer\IRandomNumberGenerator.cs" />
-    <Compile Include="BlurryRoots\Randomizer\Randomizer.cs" />
-    <Compile Include="BlurryRoots\Randomizer\UniformRandomNumberGenerator.cs" />
-    <Compile Include="BlurryRoots\Sprites\MultiTextureSprite.cs" />
-    <Compile Include="BlurryRoots\Sprites\TextureSprite.cs" />
-    <Compile Include="BlurryRoots\States\IState.cs" />
-    <Compile Include="BlurryRoots\States\StateManager.cs" />
+    <Compile Include="Cameras\CameraController.cs" />
+    <Compile Include="Cameras\TopDownCameraController.cs" />
+    <Compile Include="Commands\CommandQueue.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\InvokeDelegateCommand.cs" />
+    <Compile Include="Common\ComponentLocator.cs" />
+    <Compile Include="Common\EnumTypeEnumerator.cs" />
+    <Compile Include="Common\TimedTrigger.cs" />
+    <Compile Include="Events\EventBus.cs" />
+    <Compile Include="Events\EventBusSystem.cs" />
+    <Compile Include="Inputs\InputEvents.cs" />
+    <Compile Include="Inputs\InputManager.cs" />
+    <Compile Include="Inputs\InputSystem.cs" />
+    <Compile Include="Math\BezierCurve3.cs" />
+    <Compile Include="Math\MathUtilities.cs" />
+    <Compile Include="Randomizer\IRandomNumberGenerator.cs" />
+    <Compile Include="Randomizer\Randomizer.cs" />
+    <Compile Include="Randomizer\UniformRandomNumberGenerator.cs" />
+    <Compile Include="Sprites\MultiTextureSprite.cs" />
+    <Compile Include="Sprites\TextureSprite.cs" />
+    <Compile Include="States\IState.cs" />
+    <Compile Include="States\StateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\PreferenceStorage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BlurryRoots\AI\" />
+    <Folder Include="AI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
