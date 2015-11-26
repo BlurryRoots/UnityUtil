@@ -55,6 +55,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -65,7 +69,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="ProjectPrefsStorageTest.cs" />
+    <Compile Include="Tests\ChainTest.cs" />
+    <Compile Include="Tests\ProjectPrefsStorageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +80,14 @@
     <ProjectReference Include="..\Editor\Editor.csproj">
       <Project>{6db5a869-d8f4-4794-81b4-1d702c76192e}</Project>
       <Name>Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtime.Procedural.Implementation\Runtime.Procedural.Implementation.csproj">
+      <Project>{1d8fe2c1-de82-4c7b-836b-ce377d5c3c52}</Project>
+      <Name>Runtime.Procedural.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtime.Procedural\Runtime.Procedural.csproj">
+      <Project>{076f3326-dfbc-4a78-87a6-7f09b17560aa}</Project>
+      <Name>Runtime.Procedural</Name>
     </ProjectReference>
     <ProjectReference Include="..\Runtime\Runtime.csproj">
       <Project>{4cc9a551-3337-49a9-a755-3b1a51558a5b}</Project>

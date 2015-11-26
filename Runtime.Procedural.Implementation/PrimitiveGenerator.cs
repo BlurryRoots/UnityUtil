@@ -31,9 +31,7 @@ namespace BlurryRoots.Procedural.Implementation {
 			this.amount = amount;
 		}
 
-		[SerializeField]
 		private PrimitiveType type;
-		[SerializeField]
 		private uint amount;
 
 	}

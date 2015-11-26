@@ -13,6 +13,14 @@ namespace BlurryRoots {
 				editorWindow.Focus ();
 			}
 
+			void SaveLoadStuff () {
+				var path = AssetDatabase.GenerateUniqueAssetPath ("path/to/prefs");
+				AssetDatabase.CreateAsset (this, path);
+
+				var prefs = AssetDatabase.LoadAssetAtPath<ProjectPrefs> (path);
+				AssetDatabase.SaveAssets ();
+			}
+
 			void OnGUI () {
 				if (GUILayout.Button ("Add Int")) {
 					this.storage.SetInt ("asdf" + this.storage.Count, 42 + this.storage.Count);
