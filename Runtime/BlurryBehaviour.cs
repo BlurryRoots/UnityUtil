@@ -94,50 +94,99 @@ namespace BlurryRoots {
 			//
 		}
 
+		/// <summary>
+		/// Gets called when something in the gameobjects hierachy has changed.
+		/// </summary>
+		/// <param name="type">Info weather parent or children have changed.</param>
 		protected virtual void OnHierachyChange (HierachyEventType type) {
 			//
 		}
 
+		/// <summary>
+		/// Gets called when a level is loaded.
+		/// </summary>
+		/// <param name="level">Index number of level (scene) loaded.</param>
 		protected virtual void OnLevelLoad (int level) {
 			//
 		}
 
+		/// <summary>
+		/// Gets called right before gameobject gets destroyed.
+		/// </summary>
 		protected virtual void OnDispose () {
 			//
 		}
 
+		/// <summary>
+		/// Gets called within a fixed time frame.
+		/// </summary>
 		protected virtual void OnFixedUpdate () {
 			//
 		}
 
+		/// <summary>
+		/// Gets called every frame.
+		/// </summary>
 		protected virtual void OnUpdate () {
 			//
 		}
 
+		/// <summary>
+		/// Gets called after the normal updates.
+		/// </summary>
 		protected virtual void OnLateUpdate () {
 			//
 		}
 
+		/// <summary>
+		/// Gets called if a 3D collision event happend.
+		/// </summary>
+		/// <param name="type">Collision type.</param>
+		/// <param name="collision">Collsion information.</param>
 		protected virtual void OnCollide3D (CollisionEventType type, Collision collision) {
 			//
 		}
 
+		/// <summary>
+		/// Gets called if a 2D collision event happend.
+		/// </summary>
+		/// <param name="type">Collision type.</param>
+		/// <param name="collision">Collsion information.</param>
 		protected virtual void OnCollide2D (CollisionEventType type, Collision2D collision) {
 			//
 		}
 
+		/// <summary>
+		/// Gets called when a collision event with a particle happens.
+		/// </summary>
+		/// <param name="other">Gameobject representing the particle.</param>
 		protected virtual void OnCollideParticle (GameObject other) {
 			//
 		}
 
+		/// <summary>
+		/// Gets called when the controller hits a collider while performing a Move.
+		/// This can be used to push objects when they collide with the character.
+		/// </summary>
+		/// <param name="hit"></param>
 		protected virtual void OnCollideCharacterController (ControllerColliderHit hit) {
 			//
 		}
 
+		/// <summary>
+		/// Gets called when a collision with a 3D trigger happens.
+		/// </summary>
+		/// <param name="type">Collision type.</param>
+		/// <param name="collider">Collision information.</param>
 		protected virtual void OnTrigger3D (CollisionEventType type, Collider collider) {
 			//
 		}
 
+		/// <summary>
+		/// Gets called when a collision with a 2D trigger happens.
+		/// </summary>
+		/// <param name="type">Collision type.</param>
+		/// <param name="collider">Collision information.</param>
 		protected virtual void OnTrigger2D (CollisionEventType type, Collider2D collider) {
 			//
 		}
@@ -168,12 +217,14 @@ namespace BlurryRoots {
 		}
 		#endregion Editor implementations
 
+		#region Contructor
 		/// <summary>
 		/// Creates a new BlurryBehaviour.
 		/// </summary>
 		public BlurryBehaviour () {
 			//
 		}
+		#endregion Constructor
 
 		#region States
 		/// <summary>
