@@ -42,6 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlurryBehaviour.cs" />
     <Compile Include="Cameras\CameraController.cs" />
     <Compile Include="Cameras\TopDownCameraController.cs" />
     <Compile Include="Commands\CommandQueue.cs" />

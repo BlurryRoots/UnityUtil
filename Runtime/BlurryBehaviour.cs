@@ -197,7 +197,7 @@ namespace BlurryRoots {
 		/// Gets called when component values get reset. Only gets called in editor
 		/// mode.
 		/// </summary>
-		internal virtual void OnReset () {
+		public virtual void OnReset () {
 			//
 		}
 
@@ -205,15 +205,15 @@ namespace BlurryRoots {
 		/// Gets called when gizmos are about to be drawn.
 		/// </summary>
 		/// <param name="selected">Is true if gameobject selected.</param>
-		internal virtual void OnGizmos (bool selected) {
-
+		public virtual void OnGizmos (bool selected) {
+			//
 		}
 
 		/// <summary>
 		/// Gets called when a value of this component gets changed in editor mode.
 		/// </summary>
-		internal virtual void OnValueChanged () {
-
+		public virtual void OnValueChanged () {
+			//
 		}
 		#endregion Editor implementations
 
@@ -233,7 +233,7 @@ namespace BlurryRoots {
 		private void Awake () {
 			this.OnAwake ();
 		}
-		
+
 		/// <summary>
 		/// Start is called on the frame when a script is enabled just before any
 		/// of the Update methods is called the first time.
@@ -350,7 +350,7 @@ namespace BlurryRoots {
 		private void OnApplicationPause (bool isPaused) {
 			if (isPaused) {
 				this.OnPause ();
-			} 
+			}
 			else {
 				this.OnResume ();
 			}
@@ -543,7 +543,7 @@ namespace BlurryRoots {
 		//OnRenderObject	OnRenderObject is called after camera has rendered the scene.
 		//OnWillRenderObject	OnWillRenderObject is called once for each camera if the object is visible.
 		#endregion Rendering
-				
+
 	}
 
 }
