@@ -7,6 +7,7 @@ namespace BlurryRoots {
 
 	public class BlurryBehaviour : MonoBehaviour {
 
+		#region Event types
 		/// <summary>
 		/// Types of collision events.
 		/// </summary>
@@ -23,94 +24,147 @@ namespace BlurryRoots {
 			Parent,
 			Children,
 		}
+		#endregion Event types
 
 		#region Runtime implementations
 		/// <summary>
 		/// OnAwake is called when the script instance is being loaded.
 		/// </summary>
-		internal virtual void OnAwake () {
+		protected virtual void OnAwake () {
 			//
 		}
 
 		/// <summary>
-		/// OnStart is called on the frame when a script is enabled just before any of the Update methods is called the first time.
+		/// OnStart is called on the frame when a script is enabled for the first
+		/// time just before any of the Update methods is called. This won't be
+		/// called again if component is deactivated and reactived again.
 		/// </summary>
-		internal virtual void OnStart () {
+		protected virtual void OnStart () {
 			//
 		}
 
-		internal virtual void OnVisibility (bool gained) {
+		/// <summary>
+		/// Is called when visiblity of the renderer has changed. 
+		/// </summary>
+		/// <param name="gained">Is false when the renderer is no longer visible
+		/// by any camera, true when the renderer became visible by any camera.
+		/// </param>
+		protected virtual void OnVisibility (bool gained) {
 			//
 		}
 
-		internal virtual void OnFocus (bool gained) {
+		/// <summary>
+		/// Gets called when focus of application has changed.
+		/// </summary>
+		/// <param name="gained">
+		/// Is true if focus is gained, false when lost.
+		/// </param>
+		protected virtual void OnFocus (bool gained) {
 			//
 		}
 
-		internal virtual void OnPause (bool paused) {
+		/// <summary>
+		/// Gets called when application is paused.
+		/// </summary>
+		protected virtual void OnPause () {
 			//
 		}
 
-		internal virtual void OnQuit () {
+		/// <summary>
+		/// Gets called when application is resumed.
+		/// </summary>
+		protected virtual void OnResume () {
+
+		}
+
+		/// <summary>
+		/// Gets called right before application is quit.
+		/// </summary>
+		protected virtual void OnQuit () {
 			//
 		}
 
-		internal virtual void OnActivate (bool enabled) {
+		/// <summary>
+		/// Gets called when active state of the component has been changed.
+		/// </summary>
+		/// <param name="enabled">
+		/// Is true when enabled, false when deactived.
+		/// </param>
+		protected virtual void OnActivate (bool enabled) {
 			//
 		}
 
-		internal virtual void OnHierachyChange (HierachyEventType type) {
+		protected virtual void OnHierachyChange (HierachyEventType type) {
 			//
 		}
 
-		internal virtual void OnLevelLoad (int level) {
+		protected virtual void OnLevelLoad (int level) {
 			//
 		}
 
-		internal virtual void OnDispose () {
+		protected virtual void OnDispose () {
 			//
 		}
 
-		internal virtual void OnFixedUpdate () {
+		protected virtual void OnFixedUpdate () {
 			//
 		}
 
-		internal virtual void OnUpdate () {
+		protected virtual void OnUpdate () {
 			//
 		}
 
-		internal virtual void OnLateUpdate () {
+		protected virtual void OnLateUpdate () {
 			//
 		}
 
-		internal virtual void OnCollide3D (CollisionEventType type, Collision collision) {
+		protected virtual void OnCollide3D (CollisionEventType type, Collision collision) {
 			//
 		}
 
-		internal virtual void OnCollide2D (CollisionEventType type, Collision2D collision) {
+		protected virtual void OnCollide2D (CollisionEventType type, Collision2D collision) {
 			//
 		}
 
-		internal virtual void OnCollideParticle (GameObject other) {
+		protected virtual void OnCollideParticle (GameObject other) {
 			//
 		}
 
-		internal virtual void OnCollideCharacterController (ControllerColliderHit hit) {
+		protected virtual void OnCollideCharacterController (ControllerColliderHit hit) {
 			//
 		}
 
-		internal virtual void OnTrigger3D (CollisionEventType type, Collider collider) {
+		protected virtual void OnTrigger3D (CollisionEventType type, Collider collider) {
 			//
 		}
 
-		internal virtual void OnTrigger2D (CollisionEventType type, Collider2D collider) {
+		protected virtual void OnTrigger2D (CollisionEventType type, Collider2D collider) {
 			//
 		}
 		#endregion Runtime implementations
 
 		#region Editor implementations
+		/// <summary>
+		/// Gets called when component values get reset. Only gets called in editor
+		/// mode.
+		/// </summary>
 		internal virtual void OnReset () {
 			//
+		}
+
+		/// <summary>
+		/// Gets called when gizmos are about to be drawn.
+		/// </summary>
+		/// <param name="selected">Is true if gameobject selected.</param>
+		internal virtual void OnGizmos (bool selected) {
+
+		}
+
+		/// <summary>
+		/// Gets called when a value of this component gets changed in editor mode.
+		/// </summary>
+		internal virtual void OnValueChanged () {
+
 		}
 		#endregion Editor implementations
 
@@ -130,24 +184,27 @@ namespace BlurryRoots {
 		}
 		
 		/// <summary>
-		/// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
+		/// Start is called on the frame when a script is enabled just before any
+		/// of the Update methods is called the first time.
 		/// </summary>
 		private void Start () {
 			this.OnStart ();
 		}
 
 		/// <summary>
-		/// OnBecameInvisible is called when the renderer is no longer visible by any camera.
-		/// </summary>
-		private void OnBecameInvisible () {
-			this.OnVisibility (false);
-		}
-
-		/// <summary>
-		/// OnBecameVisible is called when the renderer became visible by any camera.
+		/// OnBecameVisible is called when the renderer became visible by any
+		/// camera.
 		/// </summary>
 		private void OnBecameVisible () {
 			this.OnVisibility (true);
+		}
+
+		/// <summary>
+		/// OnBecameInvisible is called when the renderer is no longer visible by
+		/// any camera.
+		/// </summary>
+		private void OnBecameInvisible () {
+			this.OnVisibility (false);
 		}
 
 		/// <summary>
@@ -165,14 +222,16 @@ namespace BlurryRoots {
 		}
 
 		/// <summary>
-		/// This function is called when the list of children of the transform of the GameObject has changed.
+		/// This function is called when the list of children of the transform of
+		/// the GameObject has changed.
 		/// </summary>
 		private void OnTransformChildrenChanged () {
 			this.OnHierachyChange (HierachyEventType.Children);
 		}
 
 		/// <summary>
-		/// This function is called when the parent property of the transform of the GameObject has changed.
+		/// This function is called when the parent property of the transform of
+		/// the GameObject has changed.
 		/// </summary>
 		private void OnTransformParentChanged () {
 			this.OnHierachyChange (HierachyEventType.Parent);
@@ -196,7 +255,8 @@ namespace BlurryRoots {
 
 		#region Updates
 		/// <summary>
-		/// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+		/// This function is called every fixed framerate frame, if the
+		/// MonoBehaviour is enabled.
 		/// </summary>
 		private void FixedUpdate () {
 			this.OnFixedUpdate ();
@@ -237,7 +297,12 @@ namespace BlurryRoots {
 		/// </summary>
 		/// <param name="isPaused">Pause state.</param>
 		private void OnApplicationPause (bool isPaused) {
-			this.OnPause (isPaused);
+			if (isPaused) {
+				this.OnPause ();
+			} 
+			else {
+				this.OnResume ();
+			}
 		}
 
 		/// <summary>
@@ -390,8 +455,19 @@ namespace BlurryRoots {
 		}
 
 		//OnDrawGizmos	Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.
+		private void OnDrawGizmos () {
+			this.OnGizmos (false);
+		}
+
 		//OnDrawGizmosSelected	Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.
+		private void OnDrawGizmosSelected () {
+			this.OnGizmos (true);
+		}
+
 		//OnValidate	This function is called when the script is loaded or a value is changed in the inspector (Called in the editor only).
+		private void OnValidate () {
+			this.OnValueChanged ();
+		}
 		#endregion EditorOrInspector
 
 		#region GUI
