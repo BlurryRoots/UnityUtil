@@ -66,8 +66,9 @@
     <Compile Include="States\IState.cs" />
     <Compile Include="States\StateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\Base64Serializer.cs" />
+    <Compile Include="Storage\Base64DeSerializer.cs" />
     <Compile Include="Storage\PreferenceStorage.cs" />
+    <Compile Include="Storage\XMLDeSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AI\" />

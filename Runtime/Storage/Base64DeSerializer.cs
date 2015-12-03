@@ -8,12 +8,14 @@ namespace BlurryRoots.Storage {
 	/// Serialized / Deserialized on creation.
 	/// </summary>
 	/// <typeparam name="TDataType">The type you want to (de)serialze.</typeparam>
-	public class Base64DeSerializer<TDataType> {
+	public
+	class Base64DeSerializer<TDataType> {
 
 		/// <summary>
 		/// String representing the serialized data.
 		/// </summary>
-		public string Serialized {
+		public
+		string Serialized {
 			get;
 			private set;
 		}
@@ -21,7 +23,8 @@ namespace BlurryRoots.Storage {
 		/// <summary>
 		/// Data corresponding to the serialized string.
 		/// </summary>
-		public TDataType Data {
+		public
+		TDataType Data {
 			get;
 			private set;
 		}
@@ -31,7 +34,8 @@ namespace BlurryRoots.Storage {
 		/// construction.
 		/// </summary>
 		/// <param name="data">Data to be serialized.</param>
-		public Base64DeSerializer (TDataType data) {
+		public
+		Base64DeSerializer (TDataType data) {
 			this.Serialized = Base64DeSerializer<TDataType>
 				.SerializeToBase64String (data);
 			this.Data = data;
@@ -42,7 +46,8 @@ namespace BlurryRoots.Storage {
 		/// serialized data. Gets deserialzed on construction.
 		/// </summary>
 		/// <param name="serialized">Base64 serialized data.</param>
-		public Base64DeSerializer (string serialized) {
+		public
+		Base64DeSerializer (string serialized) {
 			this.Serialized = serialized;
 			this.Data = Base64DeSerializer<TDataType>
 				.DesializeFromBase64String<TDataType> (this.Serialized);
@@ -52,10 +57,11 @@ namespace BlurryRoots.Storage {
 		/// Helper method do deserialized from string.
 		/// </summary>
 		/// <typeparam name="TData">Data type used to interpret data.</typeparam>
-		/// <param name="s">Serialized string.</param>
+		/// <param name="serialized">Serialized string.</param>
 		/// <returns>Deserialized data.</returns>
-		private static TData DesializeFromBase64String<TData> (string s) {
-			byte[] b = System.Convert.FromBase64String (s);
+		private static
+		TData DesializeFromBase64String<TData> (string serialized) {
+			byte[] b = System.Convert.FromBase64String (serialized);
 
 			using (var stream = new MemoryStream (b)) {
 				var formatter = new BinaryFormatter ();
@@ -71,7 +77,8 @@ namespace BlurryRoots.Storage {
 		/// <typeparam name="TData">Data type of data to be serialized.</typeparam>
 		/// <param name="data">Data to be serizaled.</param>
 		/// <returns>Base64 encoded serialized data.</returns>
-		private static string SerializeToBase64String<TData> (TData data) {
+		private static
+		string SerializeToBase64String<TData> (TData data) {
 			using (var stream = new MemoryStream ()) {
 				var formatter = new BinaryFormatter ();
 				formatter.Serialize (stream, data);
