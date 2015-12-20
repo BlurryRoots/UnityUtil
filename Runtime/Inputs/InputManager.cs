@@ -109,9 +109,6 @@ namespace BlurryRoots {
 						this.OnAxisChanged (axisName, prevValue, curValue);
 
 						if (hasValue && Mathf.Abs (prevValue) == 0) {
-							//var c = (int)(Mathf.Ceil (Mathf.Abs (curValue)) * Mathf.Sign (curValue));
-							//var p = (int)(Mathf.Ceil (Mathf.Abs (prevValue)) * Mathf.Sign (prevValue));
-
 							this.OnAxisPressed (axisName, curValue);
 						}
 
