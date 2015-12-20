@@ -197,7 +197,7 @@ namespace BlurryRoots {
 		/// Gets called when component values get reset. Only gets called in editor
 		/// mode.
 		/// </summary>
-		public virtual void OnReset () {
+		protected virtual void OnReset () {
 			//
 		}
 
@@ -205,14 +205,14 @@ namespace BlurryRoots {
 		/// Gets called when gizmos are about to be drawn.
 		/// </summary>
 		/// <param name="selected">Is true if gameobject selected.</param>
-		public virtual void OnGizmos (bool selected) {
+		protected virtual void OnGizmos (bool selected) {
 			//
 		}
 
 		/// <summary>
 		/// Gets called when a value of this component gets changed in editor mode.
 		/// </summary>
-		public virtual void OnValueChanged () {
+		protected virtual void OnValueChanged () {
 			//
 		}
 		#endregion Editor implementations
@@ -224,130 +224,132 @@ namespace BlurryRoots {
 		public BlurryBehaviour () {
 			//
 		}
-		#endregion Constructor
+        #endregion Constructor
 
-		#region States
-		/// <summary>
-		/// Awake is called when the script instance is being loaded.
-		/// </summary>
-		private void Awake () {
+        // Unity functions
+
+        #region States
+        /// <summary>
+        /// Awake is called when the script instance is being loaded.
+        /// </summary>
+        internal void Awake () {
 			this.OnAwake ();
 		}
 
-		/// <summary>
-		/// Start is called on the frame when a script is enabled just before any
-		/// of the Update methods is called the first time.
-		/// </summary>
-		private void Start () {
+        /// <summary>
+        /// Start is called on the frame when a script is enabled just before any
+        /// of the Update methods is called the first time.
+        /// </summary>
+        internal void Start () {
 			this.OnStart ();
 		}
 
-		/// <summary>
-		/// OnBecameVisible is called when the renderer became visible by any
-		/// camera.
-		/// </summary>
-		private void OnBecameVisible () {
+        /// <summary>
+        /// OnBecameVisible is called when the renderer became visible by any
+        /// camera.
+        /// </summary>
+        internal void OnBecameVisible () {
 			this.OnVisibility (true);
 		}
 
-		/// <summary>
-		/// OnBecameInvisible is called when the renderer is no longer visible by
-		/// any camera.
-		/// </summary>
-		private void OnBecameInvisible () {
+        /// <summary>
+        /// OnBecameInvisible is called when the renderer is no longer visible by
+        /// any camera.
+        /// </summary>
+        internal void OnBecameInvisible () {
 			this.OnVisibility (false);
 		}
 
-		/// <summary>
-		/// This function is called when the object becomes enabled and active.
-		/// </summary>
-		private void OnEnable () {
+        /// <summary>
+        /// This function is called when the object becomes enabled and active.
+        /// </summary>
+        internal void OnEnable () {
 			this.OnActivate (true);
 		}
 
-		/// <summary>
-		/// This function is called when the behaviour becomes disabled () or inactive.
-		/// </summary>
-		private void OnDisable () {
+        /// <summary>
+        /// This function is called when the behaviour becomes disabled () or inactive.
+        /// </summary>
+        internal void OnDisable () {
 			this.OnActivate (false);
 		}
 
-		/// <summary>
-		/// This function is called when the list of children of the transform of
-		/// the GameObject has changed.
-		/// </summary>
-		private void OnTransformChildrenChanged () {
+        /// <summary>
+        /// This function is called when the list of children of the transform of
+        /// the GameObject has changed.
+        /// </summary>
+        internal void OnTransformChildrenChanged () {
 			this.OnHierachyChange (HierachyEventType.Children);
 		}
 
-		/// <summary>
-		/// This function is called when the parent property of the transform of
-		/// the GameObject has changed.
-		/// </summary>
-		private void OnTransformParentChanged () {
+        /// <summary>
+        /// This function is called when the parent property of the transform of
+        /// the GameObject has changed.
+        /// </summary>
+        internal void OnTransformParentChanged () {
 			this.OnHierachyChange (HierachyEventType.Parent);
 		}
 
-		/// <summary>
-		/// This function is called after a new level was loaded.
-		/// </summary>
-		/// <param name="level">Level number which is loaded.</param>
-		private void OnLevelWasLoaded (int level) {
+        /// <summary>
+        /// This function is called after a new level was loaded.
+        /// </summary>
+        /// <param name="level">Level number which is loaded.</param>
+        internal void OnLevelWasLoaded (int level) {
 			this.OnLevelLoad (level);
 		}
 
-		/// <summary>
-		/// This function is called when the MonoBehaviour will be destroyed.
-		/// </summary>
-		private void OnDestroy () {
+        /// <summary>
+        /// This function is called when the MonoBehaviour will be destroyed.
+        /// </summary>
+        internal void OnDestroy () {
 			this.OnDispose ();
 		}
-		#endregion States
+        #endregion States
 
-		#region Updates
-		/// <summary>
-		/// This function is called every fixed framerate frame, if the
-		/// MonoBehaviour is enabled.
-		/// </summary>
-		private void FixedUpdate () {
+        #region Updates
+        /// <summary>
+        /// This function is called every fixed framerate frame, if the
+        /// MonoBehaviour is enabled.
+        /// </summary>
+        internal void FixedUpdate () {
 			this.OnFixedUpdate ();
 		}
 
-		/// <summary>
-		/// Update is called every frame, if the MonoBehaviour is enabled.
-		/// </summary>
-		void Update () {
+        /// <summary>
+        /// Update is called every frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        internal void Update () {
 			this.OnUpdate ();
 		}
 
-		/// <summary>
-		/// LateUpdate is called every frame, if the Behaviour is enabled.
-		/// </summary>
-		private void LateUpdate () {
+        /// <summary>
+        /// LateUpdate is called every frame, if the Behaviour is enabled.
+        /// </summary>
+        internal void LateUpdate () {
 			this.OnLateUpdate ();
 		}
-		#endregion Updates
+        #endregion Updates
 
-		#region Animation
-		//OnAnimatorIK	Callback for setting up animation IK (inverse kinematics).
-		//OnAnimatorMove	Callback for processing animation movements for modifying root motion.
-		//OnJointBreak	Called when a joint attached to the same game object broke.
-		#endregion Animation
+        #region Animation
+        //OnAnimatorIK	Callback for setting up animation IK (inverse kinematics).
+        //OnAnimatorMove	Callback for processing animation movements for modifying root motion.
+        //OnJointBreak	Called when a joint attached to the same game object broke.
+        #endregion Animation
 
-		#region Application
-		/// <summary>
-		/// Sent to all game objects when the player gets or loses focus.
-		/// </summary>
-		/// <param name="lostFocus">Focus state.</param>
-		private void OnApplicationFocus (bool lostFocus) {
+        #region Application
+        /// <summary>
+        /// Sent to all game objects when the player gets or loses focus.
+        /// </summary>
+        /// <param name="lostFocus">Focus state.</param>
+        internal void OnApplicationFocus (bool lostFocus) {
 			this.OnFocus (!lostFocus);
 		}
 
-		/// <summary>
-		/// Sent to all game objects when the player pauses.
-		/// </summary>
-		/// <param name="isPaused">Pause state.</param>
-		private void OnApplicationPause (bool isPaused) {
+        /// <summary>
+        /// Sent to all game objects when the player pauses.
+        /// </summary>
+        /// <param name="isPaused">Pause state.</param>
+        internal void OnApplicationPause (bool isPaused) {
 			if (isPaused) {
 				this.OnPause ();
 			}
@@ -356,80 +358,80 @@ namespace BlurryRoots {
 			}
 		}
 
-		/// <summary>
-		/// Sent to all game objects before the application is quit.
-		/// </summary>
-		private void OnApplicationQuit () {
+        /// <summary>
+        /// Sent to all game objects before the application is quit.
+        /// </summary>
+        internal void OnApplicationQuit () {
 			this.OnQuit ();
 		}
-		#endregion Application
+        #endregion Application
 
-		#region Audio
-		//OnAudioFilterRead	If OnAudioFilterRead is implemented, Unity will insert a custom filter into the audio DSP chain.
-		#endregion Audio
+        #region Audio
+        //OnAudioFilterRead	If OnAudioFilterRead is implemented, Unity will insert a custom filter into the audio DSP chain.
+        #endregion Audio
 
-		#region Collision
-		/// <summary>
-		/// OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.
-		/// </summary>
-		/// <param name="collision">Collision information.</param>
-		private void OnCollisionEnter (Collision collision) {
+        #region Collision
+        /// <summary>
+        /// OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.
+        /// </summary>
+        /// <param name="collision">Collision information.</param>
+        internal void OnCollisionEnter (Collision collision) {
 			this.OnCollide3D (CollisionEventType.Enter, collision);
 		}
 
-		/// <summary>
-		/// OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.
-		/// </summary>
-		/// <param name="collision">Collision information.</param>
-		private void OnCollisionStay (Collision collision) {
+        /// <summary>
+        /// OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.
+        /// </summary>
+        /// <param name="collision">Collision information.</param>
+        internal void OnCollisionStay (Collision collision) {
 			this.OnCollide3D (CollisionEventType.Stay, collision);
 		}
 
-		/// <summary>
-		/// 	OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.
-		/// </summary>
-		/// <param name="collision">Collision information.</param>
-		private void OnCollisionExit (Collision collision) {
+        /// <summary>
+        /// 	OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.
+        /// </summary>
+        /// <param name="collision">Collision information.</param>
+        internal void OnCollisionExit (Collision collision) {
 			this.OnCollide3D (CollisionEventType.Exit, collision);
 		}
 
-		/// <summary>
-		/// Sent when an incoming collider makes contact with this object's collider (2D physics only).
-		/// </summary>
-		/// <param name="collision">Collision information.</param>
-		private void OnCollisionEnter2D (Collision2D collision) {
+        /// <summary>
+        /// Sent when an incoming collider makes contact with this object's collider (2D physics only).
+        /// </summary>
+        /// <param name="collision">Collision information.</param>
+        internal void OnCollisionEnter2D (Collision2D collision) {
 			this.OnCollide2D (CollisionEventType.Enter, collision);
 		}
 
-		/// <summary>
-		/// Sent each frame where a collider on another object is touching this object's collider (2D physics only).
-		/// </summary>
-		/// <param name="collision">Collision information.</param>
-		private void OnCollisionStay2D (Collision2D collision) {
+        /// <summary>
+        /// Sent each frame where a collider on another object is touching this object's collider (2D physics only).
+        /// </summary>
+        /// <param name="collision">Collision information.</param>
+        internal void OnCollisionStay2D (Collision2D collision) {
 			this.OnCollide2D (CollisionEventType.Stay, collision);
 		}
 
-		/// <summary>
-		/// Sent when a collider on another object stops touching this object's collider (2D physics only).
-		/// </summary>
-		/// <param name="collision">Collision information.</param>
-		private void OnCollisionExit2D (Collision2D collision) {
+        /// <summary>
+        /// Sent when a collider on another object stops touching this object's collider (2D physics only).
+        /// </summary>
+        /// <param name="collision">Collision information.</param>
+        internal void OnCollisionExit2D (Collision2D collision) {
 			this.OnCollide2D (CollisionEventType.Exit, collision);
 		}
 
-		/// <summary>
-		/// OnParticleCollision is called when a particle hits a collider.
-		/// </summary>
-		/// <param name="other">Colliding particle game object.</param>
-		private void OnParticleCollision (GameObject other) {
+        /// <summary>
+        /// OnParticleCollision is called when a particle hits a collider.
+        /// </summary>
+        /// <param name="other">Colliding particle game object.</param>
+        internal void OnParticleCollision (GameObject other) {
 			this.OnCollideParticle (other);
 		}
 
-		/// <summary>
-		/// OnControllerColliderHit is called when the controller hits a collider while performing a Move.
-		/// </summary>
-		/// <param name="hit">Hit information.</param>
-		private void OnControllerColliderHit (ControllerColliderHit hit) {
+        /// <summary>
+        /// OnControllerColliderHit is called when the controller hits a collider while performing a Move.
+        /// </summary>
+        /// <param name="hit">Hit information.</param>
+        internal void OnControllerColliderHit (ControllerColliderHit hit) {
 			this.OnCollideCharacterController (hit);
 		}
 		#endregion Collision
@@ -439,84 +441,84 @@ namespace BlurryRoots {
 		/// OnTriggerEnter is called when the Collider other enters the trigger.
 		/// </summary>
 		/// <param name="other">Collision information.</param>
-		private void OnTriggerEnter (Collider other) {
+		internal void OnTriggerEnter (Collider other) {
 			this.OnTrigger3D (CollisionEventType.Enter, other);
 		}
 
-		/// <summary>
-		/// OnTriggerStay is called once per frame for every Collider other that is touching the trigger.
-		/// </summary>
-		/// <param name="other">Collision information.</param>
-		private void OnTriggerStay (Collider other) {
+        /// <summary>
+        /// OnTriggerStay is called once per frame for every Collider other that is touching the trigger.
+        /// </summary>
+        /// <param name="other">Collision information.</param>
+        internal void OnTriggerStay (Collider other) {
 			this.OnTrigger3D (CollisionEventType.Stay, other);
 		}
 
-		/// <summary>
-		/// OnTriggerExit is called when the Collider other has stopped touching the trigger.
-		/// </summary>
-		/// <param name="other">Collision information.</param>
-		private void OnTriggerExit (Collider other) {
+        /// <summary>
+        /// OnTriggerExit is called when the Collider other has stopped touching the trigger.
+        /// </summary>
+        /// <param name="other">Collision information.</param>
+        internal void OnTriggerExit (Collider other) {
 			this.OnTrigger3D (CollisionEventType.Exit, other);
 		}
 
-		/// <summary>
-		/// Sent when another object enters a trigger collider attached to this object (2D physics only).
-		/// </summary>
-		/// <param name="other">Collision information.</param>
-		private void OnTriggerEnter2D (Collider2D other) {
+        /// <summary>
+        /// Sent when another object enters a trigger collider attached to this object (2D physics only).
+        /// </summary>
+        /// <param name="other">Collision information.</param>
+        internal void OnTriggerEnter2D (Collider2D other) {
 			this.OnTrigger2D (CollisionEventType.Enter, other);
 		}
 
-		/// <summary>
-		/// Sent each frame where another object is within a trigger collider attached to this object (2D physics only).
-		/// </summary>
-		/// <param name="other">Collision information.</param>
-		private void OnTriggerStay2D (Collider2D other) {
+        /// <summary>
+        /// Sent each frame where another object is within a trigger collider attached to this object (2D physics only).
+        /// </summary>
+        /// <param name="other">Collision information.</param>
+        internal void OnTriggerStay2D (Collider2D other) {
 			this.OnTrigger2D (CollisionEventType.Stay, other);
 		}
 
-		/// <summary>
-		/// Sent when another object leaves a trigger collider attached to this object (2D physics only).
-		/// </summary>
-		/// <param name="other">Collision information.</param>
-		private void OnTriggerExit2D (Collider2D other) {
+        /// <summary>
+        /// Sent when another object leaves a trigger collider attached to this object (2D physics only).
+        /// </summary>
+        /// <param name="other">Collision information.</param>
+        internal void OnTriggerExit2D (Collider2D other) {
 			this.OnTrigger2D (CollisionEventType.Exit, other);
 		}
-		#endregion Trigger
+        #endregion Trigger
 
-		#region Network
-		//OnConnectedToServer	Called on the client when you have successfully connected to a server.
-		//OnDisconnectedFromServer	Called on the client when the connection was lost or you disconnected from the server.
-		//OnFailedToConnect	Called on the client when a connection attempt fails for some reason.
-		//OnFailedToConnectToMasterServer	Called on clients or servers when there is a problem connecting to the MasterServer.
-		//OnMasterServerEvent	Called on clients or servers when reporting events from the MasterServer.
-		//OnNetworkInstantiate	Called on objects which have been network instantiated with Network.Instantiate.
-		//OnPlayerConnected	Called on the server whenever a new player has successfully connected.
-		//OnPlayerDisconnected	Called on the server whenever a player disconnected from the server.
-		//OnSerializeNetworkView	Used to customize synchronization of variables in a script watched by a network view.
-		//OnServerInitialized	Called on the server whenever a Network.InitializeServer was invoked and has completed.
-		#endregion Network
+        #region Network
+        //OnConnectedToServer	Called on the client when you have successfully connected to a server.
+        //OnDisconnectedFromServer	Called on the client when the connection was lost or you disconnected from the server.
+        //OnFailedToConnect	Called on the client when a connection attempt fails for some reason.
+        //OnFailedToConnectToMasterServer	Called on clients or servers when there is a problem connecting to the MasterServer.
+        //OnMasterServerEvent	Called on clients or servers when reporting events from the MasterServer.
+        //OnNetworkInstantiate	Called on objects which have been network instantiated with Network.Instantiate.
+        //OnPlayerConnected	Called on the server whenever a new player has successfully connected.
+        //OnPlayerDisconnected	Called on the server whenever a player disconnected from the server.
+        //OnSerializeNetworkView	Used to customize synchronization of variables in a script watched by a network view.
+        //OnServerInitialized	Called on the server whenever a Network.InitializeServer was invoked and has completed.
+        #endregion Network
 
-		#region EditorOrInspector
-		/// <summary>
-		/// Reset to default values.
-		/// </summary>
-		private void Reset () {
+        #region EditorOrInspector
+        /// <summary>
+        /// Reset to default values.
+        /// </summary>
+        internal void Reset () {
 			this.OnReset ();
 		}
 
-		//OnDrawGizmos	Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.
-		private void OnDrawGizmos () {
+        //OnDrawGizmos	Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.
+        internal void OnDrawGizmos () {
 			this.OnGizmos (false);
 		}
 
-		//OnDrawGizmosSelected	Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.
-		private void OnDrawGizmosSelected () {
+        //OnDrawGizmosSelected	Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.
+        internal void OnDrawGizmosSelected () {
 			this.OnGizmos (true);
 		}
 
-		//OnValidate	This function is called when the script is loaded or a value is changed in the inspector (Called in the editor only).
-		private void OnValidate () {
+        //OnValidate	This function is called when the script is loaded or a value is changed in the inspector (Called in the editor only).
+        internal void OnValidate () {
 			this.OnValueChanged ();
 		}
 		#endregion EditorOrInspector
