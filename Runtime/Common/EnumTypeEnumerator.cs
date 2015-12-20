@@ -48,6 +48,26 @@ namespace BlurryRoots {
 					;
 			}
 
+			public static List<TEnumType> GetValueList () {
+				var list = new List<TEnumType> ();
+				var elements = EnumTypeEnumerator<TEnumType>.GetValues ();
+				foreach (var element in elements) {
+					list.Add (element);
+				}
+
+				return list;
+			}
+
+			public static List<string> GetStringValueList () {
+				var list = new List<string> ();
+				var elements = EnumTypeEnumerator<TEnumType>.GetValues ();
+				foreach (var element in elements) {
+					list.Add (element.ToString ());
+				}
+
+				return list;
+			}
+
 		}
 
 	}
