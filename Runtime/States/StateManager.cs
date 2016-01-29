@@ -9,8 +9,9 @@ namespace BlurryRoots {
 		/// Manages states.
 		/// </summary>
 		/// <typeparam name="TTransitionEnum">Enum type representing the type of a state.</typeparam>
-		public class StateManager<TTransitionEnum>
-		where TTransitionEnum : struct, System.IConvertible, IComparable {
+		public class StateManager<TTransitionEnum, TStateType>
+		where TTransitionEnum : struct, System.IConvertible, IComparable
+        where TStateType : IState<TTransitionEnum> {
 
 			/// <summary>
 			/// Delegate used to handle a state change event.
@@ -33,6 +34,12 @@ namespace BlurryRoots {
 				}
 			}
 
+            public TStateType CurrentStateObject {
+                get {
+                    return this.statePool[this.state];
+                }
+            }
+
 			/// <summary>
 			/// Updates the state machine.
 			/// </summary>
@@ -47,13 +54,17 @@ namespace BlurryRoots {
 				this.ChangeState (next);
 			}
 
+            public void Add (TTransitionEnum state, TStateType stateInstance) {
+                this.statePool.Add (state, stateInstance);
+            }
+
 			/// <summary>
 			/// Creates a new state.
 			/// </summary>
 			/// <param name="initialState"></param>
 			public StateManager (TTransitionEnum initialState) {
 				this.state = initialState;
-				this.statePool = new Dictionary<TTransitionEnum, IState<TTransitionEnum>> ();
+				this.statePool = new Dictionary<TTransitionEnum, TStateType> ();
 			}
 
 			/// <summary>
@@ -125,7 +136,7 @@ namespace BlurryRoots {
 			/// <summary>
 			/// Holds all state instances.
 			/// </summary>
-			private Dictionary<TTransitionEnum, IState<TTransitionEnum>> statePool;
+			private Dictionary<TTransitionEnum, TStateType> statePool;
 
 		}
 
