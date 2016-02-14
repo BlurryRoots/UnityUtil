@@ -29,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\BlurryRoots.Runtime.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,8 +50,10 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\InvokeDelegateCommand.cs" />
     <Compile Include="Common\ComponentLocator.cs" />
+    <Compile Include="Common\Destroyer.cs" />
     <Compile Include="Common\EnumTypeEnumerator.cs" />
     <Compile Include="Common\TimedTrigger.cs" />
+    <Compile Include="Common\UniversalSerializer.cs" />
     <Compile Include="Events\EventBus.cs" />
     <Compile Include="Events\EventBusSystem.cs" />
     <Compile Include="Inputs\InputEvents.cs" />
