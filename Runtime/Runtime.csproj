@@ -50,7 +50,6 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\InvokeDelegateCommand.cs" />
     <Compile Include="Common\ComponentLocator.cs" />
-    <Compile Include="Common\Destroyer.cs" />
     <Compile Include="Common\EnumTypeEnumerator.cs" />
     <Compile Include="Common\TimedTrigger.cs" />
     <Compile Include="Common\UniversalSerializer.cs" />
