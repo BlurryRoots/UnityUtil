@@ -2,8 +2,13 @@
 
 namespace BlurryRoots.Procedural {
 
-	// TODO: split data and processing ?!
-	[System.Serializable]
+    // TODO: split data and processing ?!
+
+    /// <summary>
+    /// Basic implementation of a chain based on a list, holding generic chain links.
+    /// </summary>
+    /// <typeparam name="TValueType">Type of data to be processed by the chain and its links.</typeparam>
+    [System.Serializable]
 	public class Chain<TValueType> : IChainLink<TValueType> {
 
 		public TValueType Process (TValueType input) {
