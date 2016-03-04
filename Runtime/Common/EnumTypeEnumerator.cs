@@ -48,6 +48,10 @@ namespace BlurryRoots {
 					;
 			}
 
+            /// <summary>
+            /// Creates a list of the enum type values.
+            /// </summary>
+            /// <returns>Value list.</returns>
 			public static List<TEnumType> GetValueList () {
 				var list = new List<TEnumType> ();
 				var elements = EnumTypeEnumerator<TEnumType>.GetValues ();
@@ -58,6 +62,10 @@ namespace BlurryRoots {
 				return list;
 			}
 
+            /// <summary>
+            /// Creates a list of string representations of the enum types values.
+            /// </summary>
+            /// <returns>Value list.</returns>
 			public static List<string> GetStringValueList () {
 				var list = new List<string> ();
 				var elements = EnumTypeEnumerator<TEnumType>.GetValues ();
